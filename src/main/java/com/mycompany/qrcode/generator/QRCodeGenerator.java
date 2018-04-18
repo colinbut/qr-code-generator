@@ -28,9 +28,9 @@ public class QRCodeGenerator {
             MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
 
         } catch (WriterException e) {
-            e.printStackTrace();
+            System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
         }
     }
 }
