@@ -21,15 +21,22 @@ public class QRCodeGenerator {
 
     private static final Logger log = LoggerFactory.getLogger(QRCodeGenerator.class);
 
+    private static final String QR_CODE_PATH = "./QRCode.png";
+
     public static void main(String[] args) {
+
+        int qrCodeWidth = 350;
+        int qrCodeHeight = 350;
+        String qrCodeImageFormat = "PNG";
+        String qrHiddenMessage = "This is a message hidden in QR Code";
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         try {
-            BitMatrix bitMatrix = qrCodeWriter.encode("This is a message hidden in QR Code", BarcodeFormat.QR_CODE, 350, 350);
+            BitMatrix bitMatrix = qrCodeWriter.encode(qrHiddenMessage, BarcodeFormat.QR_CODE, qrCodeWidth, qrCodeHeight);
 
-            Path path = FileSystems.getDefault().getPath("./QRCode.png");
+            Path path = FileSystems.getDefault().getPath(QR_CODE_PATH);
 
-            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+            MatrixToImageWriter.writeToPath(bitMatrix, qrCodeImageFormat, path);
 
         } catch (WriterException e) {
             log.error("Could not generate QR Code, WriterException :: {}", e.getMessage());
