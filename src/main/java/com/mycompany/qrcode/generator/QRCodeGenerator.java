@@ -30,7 +30,7 @@ public class QRCodeGenerator {
         } catch (WriterException e) {
             System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
+            System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
         }
     }
 }
